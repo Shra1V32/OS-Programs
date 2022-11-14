@@ -27,4 +27,4 @@ int main()
     putchar('\n');
     *shm = '*';
     return 0;
-} 
+}
