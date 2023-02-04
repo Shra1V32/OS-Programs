@@ -1,38 +1,26 @@
 #include<stdio.h>
 int main()
 {
-int n,a[10],b[10],t[10],w[10],g[10],i,m;
-float att=0,awt=0;
-            for(i=0;i<10;i++)
-            {
-                        a[i]=0; b[i]=0; w[i]=0; g[i]=0;
-            }
-printf("enter the number of process");
+            int queue[20],n,head,i,j,k,seek=0,max,diff;
+            float avg;
+            printf("Enter the max range of disk\n");
+            scanf("%d",&max);
+            printf("Enter the size of queue request\n");
             scanf("%d",&n);
-printf("\n enter the burst times");
-            for(i=0;i<n;i++)
-                scanf("%d",&b[i]);
-    printf("\nenter the arrival times");
-            for(i=0;i<n;i++)
-                scanf("%d",&a[i]);
-    g[0]=0;
-             for(i=0;i<10;i++)
-                   g[i+1]=g[i]+b[i];
-             for(i=0;i<n;i++)
-            {     
-w[i]=g[i]-a[i];
-                        t[i]=g[i+1]-a[i];
-                        awt=awt+w[i];
-                        att=att+t[i]; 
-            }
-     awt =awt/n;
-            att=att/n;
-            printf("\n\tprocess\twaiting time\tturn arround time\n");
-            for(i=0;i<n;i++)
+            printf("Enter the queue of disk positions to be read\n");
+            for(i=1;i<=n;i++)
+            scanf("%d",&queue[i]);
+            printf("Enter the initial head position\n");
+            scanf("%d",&head);
+            queue[0]=head;
+            for(j=0;j<=n-1;j++)
             {
-                        printf("\tp%d\t\t%d\t\t%d\n",i,w[i],t[i]);
+                        diff=abs(queue[j+1]-queue[j]);
+                        seek+=diff;
+                        printf("Disk head moves from %d to %d with seek                                                                                       %d\n",queue[j],queue[j+1],diff);
             }
-printf("the average waiting time is %f\n",awt);
-printf("the average turnaround time is %f\n",att);
-return 0;
+            printf("Total seek time is %d\n",seek);
+            avg=seek/(float)n;
+            printf("Average seek time is %f\n",avg);
+            return 0;
 }
