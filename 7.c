@@ -1,3 +1,4 @@
+// IPC using pipes, For sending the message from parent to child
 #include <stdio.h>
 #include <sys/types.h>
 int main()
@@ -12,11 +13,11 @@ int main()
     {
         if (pid > 0) // If the process is parent process
         {
-            write(fd[1], str1, 10);
+            write(fd[1], str1, 10); // We'll always write from the end fd[1]
         }
         else // If the process if child
         {
-            read(fd[0], str2, 10);
+            read(fd[0], str2, 10); // We'll always read from the start fd[0]
             printf("\nIn Child");
             printf("\nData received in child %s\n", str2);
         }

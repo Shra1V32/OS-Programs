@@ -29,8 +29,9 @@ int main()
         {
             printf("CHILD PROCESS: \n");
             printf("Child pid = %d, parent_pid = %d\n", getpid(), getppid());
-            char *cmd[] = {"who", (char *)0};
-            system("/bin/sleep 10s");
+            char *cmd[] = {"/usr/bin/echo", "HI"};
+            char *arg = "Hello world";
+            execl("/usr/bin/echo","/usr/bin/echo",arg, NULL);
         }
         else
         {

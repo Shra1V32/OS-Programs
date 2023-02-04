@@ -10,10 +10,10 @@ int main()
     scanf("%d", &head);
     printf("Enter the size queue request: ");
     scanf("%d", &n);
-    printf("Ente the queue disk positions to be read: ");
+    printf("Enter the queue disk positions to be read: ");
     for (i = 0; i < n; i++)
     {
-        scanf("%d", temp);
+        scanf("%d", &temp);
         if (temp <= head)
         {
             queue1[temp1] = temp;
